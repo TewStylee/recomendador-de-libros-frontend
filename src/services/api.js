@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 // Create axios instance
 const api = axios.create({
@@ -25,7 +25,7 @@ export const authAPI = {
     const response = await api.post('/auth/register', { email, password, name });
     return response.data;
   },
-  
+
   login: async (email, password) => {
     const response = await api.post('/auth/login', { email, password });
     return response.data;
@@ -58,18 +58,18 @@ export const libraryAPI = {
     const response = await api.post('/library', { googleBookId, status });
     return response.data;
   },
-  
+
   getAll: async (status = null) => {
     const url = status ? `/library?status=${status}` : '/library';
     const response = await api.get(url);
     return response.data;
   },
-  
+
   update: async (id, status) => {
     const response = await api.patch(`/library/${id}`, { status });
     return response.data;
   },
-  
+
   remove: async (id) => {
     const response = await api.delete(`/library/${id}`);
     return response.data;
