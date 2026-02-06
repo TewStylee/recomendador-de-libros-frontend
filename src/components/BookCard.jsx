@@ -14,10 +14,12 @@ const BookCard = ({ book, onInterested, onRead, onRemove, onMarkAsRead, onImageC
     return (
         <div className="book-card">
             <img
+
                 src={cover}
                 alt={title}
                 onClick={() => onImageClick && onImageClick(book)}
             />
+            
             <div className="book-info">
                 <h3>{truncatedTitle}</h3>
                 <p className="author">{authors}</p>
