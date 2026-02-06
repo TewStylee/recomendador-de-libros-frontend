@@ -10,16 +10,18 @@ const BookCard = ({ book, onInterested, onRead, onRemove, onMarkAsRead, onImageC
     const buyLink = book.volumeInfo?.infoLink || `https://www.amazon.com/s?k=${encodeURIComponent(title)}`;
 
     const truncatedTitle = title.length > 50 ? title.substring(0, 50) + '...' : title;
+ 
+    return (  
 
-    return (
         <div className="book-card">
+            
             <img
 
                 src={cover}
                 alt={title}
                 onClick={() => onImageClick && onImageClick(book)}
             />
-            
+
             <div className="book-info">
                 <h3>{truncatedTitle}</h3>
                 <p className="author">{authors}</p>
